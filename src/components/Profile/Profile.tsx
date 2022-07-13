@@ -4,7 +4,8 @@ import MyPosts from "./MyPosts/MyPosts";
 
 function Profile() {
     return (
-        <div className='content'>
+        <div>
+            <h5>Profile</h5>
             <div>ava+description</div>
             <NewPost />
             <MyPosts />

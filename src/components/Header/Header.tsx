@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -16,11 +15,11 @@ export function Header() {
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const handleChange = (event) => {
+    const handleChange = (event: any) => {
         setAuth(event.target.checked);
     };
 
-    const handleMenu = (event) => {
+    const handleMenu = (event: any) => {
         setAnchorEl(event.currentTarget);
     };
 

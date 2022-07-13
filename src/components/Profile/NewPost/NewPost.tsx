@@ -5,7 +5,7 @@ function NewPost(){
     return (
         <div>
             <Box p={2}>
-                <textarea name="newPost" id="" cols="30" rows="2"> </textarea>
+                <textarea name="newPost" id="" cols={30} rows={2}> </textarea>
                 <div>
                     <button>Add post</button>
                 </div>

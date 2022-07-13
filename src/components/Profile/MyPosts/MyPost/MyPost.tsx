@@ -6,16 +6,21 @@ import ListItem from "@mui/material/ListItem";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FaceIcon from '@mui/icons-material/Face';
 
-function MyPost(){
+type PostType = {
+    message: string
+    likes: number
+}
+
+function MyPost(props: PostType){
     return (
         <Box>
             <ListItem>
                 <ListItemIcon>
                     <FaceIcon />
                 </ListItemIcon>
-                <ListItemText primary={"That's MyPost"} />
+                <ListItemText primary={props.message} />
                 <ListItemIcon>
-                    <FavoriteBorderIcon />
+                    <FavoriteBorderIcon /> {props.likes}
                 </ListItemIcon>
             </ListItem>
         </Box>
