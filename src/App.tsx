@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css';
 import {Header} from "./components/Header/Header";
-import {Navbar} from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Main from "./components/Main/Main";

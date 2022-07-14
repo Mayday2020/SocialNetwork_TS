@@ -32,7 +32,9 @@ let iconFunction = (index: number) => {
     }
 }
 
-export function Navbar() {
+type NavbarType = {}
+
+const Navbar: React.FC<NavbarType> = (props) => {
     return (
         <Box sx={{ overflow: 'auto' }}>
                 <List>
@@ -61,3 +63,5 @@ export function Navbar() {
         </Box>
     )
 }
+
+export default Navbar
