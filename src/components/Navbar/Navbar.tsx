@@ -11,6 +11,8 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import NumbersIcon from '@mui/icons-material/Numbers';
+import {Link} from "react-router-dom";
+import s from './navbar.module.css';
 
 let iconFunction = (index: number) => {
     switch (index){
@@ -39,25 +41,27 @@ const Navbar: React.FC<NavbarType> = (props) => {
         <Box sx={{ overflow: 'auto' }}>
                 <List>
                     {['Profile', 'Messages', 'News', 'Music'].map((elementText, index) => (
-                        <a href={'/' + elementText.toLowerCase()}>
+                        <Link to={elementText.toLowerCase()} className={s.link}>
                             <ListItem button key={elementText}>
                                 <ListItemIcon>
                                     { iconFunction(index) }
                                 </ListItemIcon>
                                 <ListItemText primary={elementText} />
                             </ListItem>
-                        </a>
+                        </Link>
                     ))}
                 </List>
             <Divider />
             <List>
                 {['Settings'].map((elementText) => (
-                    <ListItem button key={elementText}>
-                        <ListItemIcon>
-                            <SettingsIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={elementText} />
-                    </ListItem>
+                    <Link to={elementText.toLowerCase()} className={s.link}>
+                        <ListItem button key={elementText}>
+                            <ListItemIcon>
+                                <SettingsIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={elementText} />
+                        </ListItem>
+                    </Link>
                 ))}
             </List>
         </Box>
