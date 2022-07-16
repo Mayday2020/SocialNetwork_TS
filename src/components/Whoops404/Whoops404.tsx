@@ -1,12 +1,15 @@
 import React from 'react'
 import {useLocation} from "react-router";
+import {Box, Typography} from "@mui/material";
 
 const Whoops404 = () => {
     let location = useLocation()
     return (
-        <div>
-            <h3> 404 Resource not found at {location.pathname}</h3>
-        </div>
+        <Box>
+            <Typography variant={'h2'} color={'red'}>
+                404 Resource not found at : <span>{location.pathname}</span>
+            </Typography>
+        </Box>
     )
 }
 

@@ -20,7 +20,7 @@ function App() {
                 <Grid item xs={10}>
                     <Main/>
                 </Grid>
-                <Grid item xs={12} sx={{backgroundColor: 'darkgrey'}}>
+                <Grid item xs={12} sx={{backgroundColor: 'lightgrey'}}>
                     <Typography>
                         This is Footer component
                     </Typography>
