@@ -4,6 +4,22 @@ import {Outlet} from "react-router";
 import {Link} from "react-router-dom";
 
 type DialogsType = {}
+type DialogsItem = {
+    name: string
+    id: number
+}
+type MessageItem = {
+    message: string
+}
+
+const DialogsItem = (props: DialogsItem) => {
+    return (
+        <div>
+            <Link to={`/messages/${props.id}`}>{props.name}</Link>
+        </div>
+    )
+}
+const MessageItem = (props: MessageItem) => <div>{props.message}</div>
 
 const Dialogs: React.FC<DialogsType> = (props) => {
     return (
@@ -11,18 +27,16 @@ const Dialogs: React.FC<DialogsType> = (props) => {
             <Typography variant="h4">Dialogs</Typography>
             <Grid container>
                 <Grid item xs={5}>
-                    Dialogs column
-                    <div><Link to={'/messages/1'}>Dmitriy</Link></div>
-                    <div><Link to={'/messages/2'}>Vladislav</Link></div>
-                    <div><Link to={'/messages/3'}>Willy</Link></div>
-                    <div><Link to={'/messages/4'}>Billy</Link></div>
+                    <DialogsItem name={'Dmitriy'} id={1}/>
+                    <DialogsItem name={'Vladislav'} id={2}/>
+                    <DialogsItem name={'Willy'} id={3}/>
+                    <DialogsItem name={'Billy'} id={4}/>
                 </Grid>
                 <Grid item xs={5}>
-                    Items column
-                    <div>Hello</div>
-                    <div>How are you?</div>
-                    <div>Where are u from?</div>
-                    <div>Nice case bro!</div>
+                    <MessageItem message={'Hello'}/>
+                    <MessageItem message={'How are you?'}/>
+                    <MessageItem message={'Where are u from?'}/>
+                    <MessageItem message={'Nice case bro!'}/>
                 </Grid>
             </Grid>
         </div>
