@@ -10,6 +10,7 @@ function Main() {
     return (
         <Box component='main' sx={{flexGrow: 1, p: 3}}>
             <Routes>
+                <Route path={'/'} />
                 <Route path={'profile'} element={<Profile />}/>
                 <Route path={'messages'} element={<Dialogs />}/>
                 <Route path={'*'} element={<Whoops404 />}/>
