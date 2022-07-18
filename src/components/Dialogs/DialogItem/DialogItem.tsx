@@ -1,12 +1,7 @@
 import {Link} from "react-router-dom";
 import React from "react";
+import {DialogDataType} from "../../../redux/state";
 
-
-type DialogsItem = {
-    name: string
-    id: number
-}
-
-const DialogsItem = (props: DialogsItem) => <div><Link to={`/messages/${props.id}`}>{props.name}</Link></div>
+const DialogsItem = (props: DialogDataType) => <div><Link to={`/messages/${props.id}`}>{props.name}</Link></div>
 
 export default DialogsItem

@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from "@mui/material/Box";
 import MyPost from "./MyPost/MyPost";
-import {PostDataType} from "../../../index";
+import {PostDataType} from "../../../redux/state";
 
 type MyPostType = {
     postsData: PostDataType[]

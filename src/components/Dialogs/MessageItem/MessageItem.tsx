@@ -1,10 +1,6 @@
 import React from "react";
+import {MessageDataType} from "../../../redux/state";
 
-type MessageItem = {
-    message: string
-    id: number
-}
-
-const MessageItem = (props: MessageItem) => <div>{props.message}</div>
+const MessageItem = (props: MessageDataType) => <div>{props.message}</div>
 
 export default MessageItem

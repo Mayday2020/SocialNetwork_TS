@@ -5,22 +5,23 @@ import Box from "@mui/material/Box";
 import {Route, Routes} from "react-router";
 import Whoops404 from "../Whoops404/Whoops404";
 import TestComponent from "../TestComponent/TestComponent";
-import {DialogDataType, MessageDataType, PostDataType} from "../../index";
+import {StateType} from "../../redux/state";
 
-type MainDataType = {
-    postsData: PostDataType[]
-    dialogsData: DialogDataType[]
-    messagesData: MessageDataType[]
+export type MainPropsType = {
+    state: StateType
+    addPost: (post: string)=> void
 }
 
-function Main(props: MainDataType) {
+const Main = (props: MainPropsType) => {
     return (
         <Box component='main' sx={{flexGrow: 1, p: 3}}>
             <Routes>
-                <Route path={'/'} />
-                <Route path={'profile'} element={<Profile postsData={props.postsData}/>}/>
-                <Route path={'messages'} element={<Dialogs dialogs={props.dialogsData} messages={props.messagesData}/>}/>
-                <Route path={'*'} element={<Whoops404 />}/>
+                <Route path={'/'}/>
+                <Route path={'profile'} element={<Profile profilePage={props.state.profilePage} addPost={props.addPost}/>}/>
+                <Route path={'messages'}
+                       element={<Dialogs messagesPage={props.state.messagesPage} />}
+                />
+                <Route path={'*'} element={<Whoops404/>}/>
             </Routes>
         </Box>
     )

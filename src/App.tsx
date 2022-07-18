@@ -6,15 +6,14 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Main from "./components/Main/Main";
 import {Typography} from "@mui/material";
-import {DialogDataType, PostDataType, MessageDataType} from "./index";
+import {addPost, DialogDataType, MessageDataType, StateType} from "./redux/state";
 
-type AppType = {
-    postsData: PostDataType[]
-    dialogsData: DialogDataType[]
-    messageData: MessageDataType[]
+export type AppPropsType = {
+    state: StateType
+    addPost: (post: string)=> void
 }
 
-function App(props: AppType) {
+const App = (props: AppPropsType) => {
     return (
         <Container fixed>
             <Grid container>
@@ -25,7 +24,7 @@ function App(props: AppType) {
                     <Navbar/>
                 </Grid>
                 <Grid item xs={10}>
-                    <Main postsData={props.postsData} dialogsData={props.dialogsData} messagesData={props.messageData}/>
+                    <Main state={props.state} addPost={addPost}/>
                 </Grid>
                 <Grid item xs={12} sx={{backgroundColor: 'lightgrey'}}>
                     <Typography>
