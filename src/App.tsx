@@ -6,8 +6,15 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Main from "./components/Main/Main";
 import {Typography} from "@mui/material";
+import {DialogDataType, PostDataType, MessageDataType} from "./index";
 
-function App() {
+type AppType = {
+    postsData: PostDataType[]
+    dialogsData: DialogDataType[]
+    messageData: MessageDataType[]
+}
+
+function App(props: AppType) {
     return (
         <Container fixed>
             <Grid container>
@@ -18,7 +25,7 @@ function App() {
                     <Navbar/>
                 </Grid>
                 <Grid item xs={10}>
-                    <Main/>
+                    <Main postsData={props.postsData} dialogsData={props.dialogsData} messagesData={props.messageData}/>
                 </Grid>
                 <Grid item xs={12} sx={{backgroundColor: 'lightgrey'}}>
                     <Typography>

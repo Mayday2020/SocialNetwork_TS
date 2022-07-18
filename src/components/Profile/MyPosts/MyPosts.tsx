@@ -1,22 +1,15 @@
 import React from 'react';
 import Box from "@mui/material/Box";
 import MyPost from "./MyPost/MyPost";
+import {PostDataType} from "../../../index";
 
-type postDataType = {
-    id: number
-    message: string
-    likes: number
+type MyPostType = {
+    postsData: PostDataType[]
 }
-function MyPosts(){
-    let postData: postDataType[] = [
-        {id: 1, message: 'That\'s MyPost', likes: 2},
-        {id: 1, message: 'Hello!!', likes: 3},
-        {id: 1, message: 'Tinkoff!', likes: 89},
-        {id: 1, message: 'Zzz...', likes: 5},
-    ]
+function MyPosts(props: MyPostType){
     return (
         <Box>
-            {postData.map(post => <MyPost message={post.message} likes={post.likes} key={post.id}/>)}
+            {props.postsData.map( p => <MyPost message={p.message} likes={p.likes} key={p.id}/>)}
         </Box>
     )
 }

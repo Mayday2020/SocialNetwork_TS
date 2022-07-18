@@ -41,7 +41,7 @@ const Navbar: React.FC<NavbarType> = (props) => {
         <Box sx={{ overflow: 'auto' }}>
                 <List>
                     {['Profile', 'Messages', 'News', 'Music'].map((elementText, index) => (
-                        <Link to={elementText.toLowerCase()} className={s.link}>
+                        <Link to={elementText.toLowerCase()} className={s.link} key={elementText}>
                             <ListItem button key={elementText}>
                                 <ListItemIcon>
                                     { iconFunction(index) }

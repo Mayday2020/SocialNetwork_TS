@@ -3,8 +3,11 @@ import NewPost from "./NewPost/NewPost";
 import MyPosts from "./MyPosts/MyPosts";
 import {Typography} from "@mui/material";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import {PostDataType} from "../../index";
 
-type ProfileType = {}
+type ProfileType = {
+    postsData: PostDataType[]
+}
 
 const Profile: React.FC<ProfileType> = (props) => {
     return (
@@ -12,7 +15,7 @@ const Profile: React.FC<ProfileType> = (props) => {
             <Typography variant="h4">Profile</Typography>
             <ProfileInfo />
             <NewPost />
-            <MyPosts />
+            <MyPosts postsData={props.postsData}/>
         </div>
     )
 }
