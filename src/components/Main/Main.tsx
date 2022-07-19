@@ -9,7 +9,8 @@ import {StateType} from "../../redux/state";
 
 export type MainPropsType = {
     state: StateType
-    addPost: (post: string)=> void
+    addPost: () => void
+    updateNewPostText: (text: string) => void
 }
 
 const Main = (props: MainPropsType) => {
@@ -17,9 +18,13 @@ const Main = (props: MainPropsType) => {
         <Box component='main' sx={{flexGrow: 1, p: 3}}>
             <Routes>
                 <Route path={'/'}/>
-                <Route path={'profile'} element={<Profile profilePage={props.state.profilePage} addPost={props.addPost}/>}/>
+                <Route path={'profile'} element={<Profile profilePage={props.state.profilePage}
+                                                          addPost={props.addPost}
+                                                          updateNewPostText={props.updateNewPostText}
+                                                />}
+                />
                 <Route path={'messages'}
-                       element={<Dialogs messagesPage={props.state.messagesPage} />}
+                       element={<Dialogs messagesPage={props.state.messagesPage}/>}
                 />
                 <Route path={'*'} element={<Whoops404/>}/>
             </Routes>

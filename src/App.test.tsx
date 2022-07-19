@@ -1,21 +1,21 @@
 import React from 'react'
 import {render, screen} from '@testing-library/react';
 import App from './App';
+import {addPost, updateNewPostText} from "./redux/state";
 
 let initialState = {
     profilePage: {
-        postsData: [{id: 666, message: 'test-post', likes: 69}]
+        postsData: [{id: 666, message: 'test-post', likes: 69}],
+        newPostText: 'test'
     },
     messagesPage: {
         dialogsData: [{id: 333, name: 'Test-name'}],
         messagesData: [{id: 111, message: 'Test-message'}]
     }
 }
-let addTestPost = (testPost: string) => {
-    return
-}
+
 test('renders learn react link', () => {
-    render( <App state={initialState} addPost={addTestPost} /> );
+    render( <App state={initialState} addPost={addPost} updateNewPostText={updateNewPostText}/> );
     const linkElement = screen.getByText(/learn react/i);
     expect(linkElement).toBeInTheDocument();
 });

@@ -8,8 +8,10 @@ import {PostDataType} from "../../redux/state";
 type ProfileType = {
     profilePage: {
         postsData: PostDataType[]
+        newPostText: string
     }
-    addPost: (post: string)=> void
+    addPost: ()=> void
+    updateNewPostText: (text: string) => void
 }
 
 const Profile: React.FC<ProfileType> = (props) => {
@@ -17,7 +19,7 @@ const Profile: React.FC<ProfileType> = (props) => {
         <div>
             <Typography variant="h4">Profile</Typography>
             <ProfileInfo />
-            <NewPost addPost={props.addPost}/>
+            <NewPost addPost={props.addPost} newPostText={props.profilePage.newPostText} updateNewPostText={props.updateNewPostText}/>
             <MyPosts postsData={props.profilePage.postsData}/>
         </div>
     )
