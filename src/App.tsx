@@ -14,7 +14,7 @@ export type AppPropsType = {
     updateNewPostText: (text: string) => void
 }
 
-const App = (props: AppPropsType) => {
+const App: React.FC<AppPropsType> = (props) => {
     return (
         <Container fixed>
             <Grid container>

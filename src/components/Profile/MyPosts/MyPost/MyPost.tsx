@@ -11,7 +11,7 @@ type PostType = {
     likes: number
 }
 
-function MyPost(props: PostType){
+const MyPost: React.FC<PostType> = (props) => {
     return (
         <Box>
             <ListItem>

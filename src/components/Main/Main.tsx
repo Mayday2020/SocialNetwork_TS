@@ -13,7 +13,7 @@ export type MainPropsType = {
     updateNewPostText: (text: string) => void
 }
 
-const Main = (props: MainPropsType) => {
+const Main: React.FC<MainPropsType> = (props) => {
     return (
         <Box component='main' sx={{flexGrow: 1, p: 3}}>
             <Routes>

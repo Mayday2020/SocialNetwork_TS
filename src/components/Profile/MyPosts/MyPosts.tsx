@@ -6,7 +6,7 @@ import {PostDataType} from "../../../redux/state";
 type MyPostType = {
     postsData: PostDataType[]
 }
-function MyPosts(props: MyPostType){
+const MyPosts: React.FC<MyPostType> = (props) => {
     return (
         <Box>
             {props.postsData.map( p => <MyPost message={p.message} likes={p.likes} key={p.id}/>)}

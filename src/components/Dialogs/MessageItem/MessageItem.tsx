@@ -1,6 +1,6 @@
 import React from "react";
 import {MessageDataType} from "../../../redux/state";
 
-const MessageItem = (props: MessageDataType) => <div>{props.message}</div>
+const MessageItem: React.FC<MessageDataType> = (props) => <div>{props.message}</div>
 
 export default MessageItem
