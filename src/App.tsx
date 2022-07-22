@@ -6,12 +6,10 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Main from "./components/Main/Main";
 import {Typography} from "@mui/material";
-import {StateType} from "./redux/state";
+import {StoreType} from "./redux/state";
 
 export type AppPropsType = {
-    state: StateType
-    addPost: ()=> void
-    updateNewPostText: (text: string) => void
+    store: StoreType
 }
 
 const App: React.FC<AppPropsType> = (props) => {
@@ -25,7 +23,7 @@ const App: React.FC<AppPropsType> = (props) => {
                     <Navbar/>
                 </Grid>
                 <Grid item xs={10}>
-                    <Main state={props.state} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
+                    <Main store={props.store}/>
                 </Grid>
                 <Grid item xs={12} sx={{backgroundColor: 'lightgrey'}}>
                     <Typography>

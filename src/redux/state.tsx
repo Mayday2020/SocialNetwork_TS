@@ -1,6 +1,3 @@
-let rerenderEntireTree = (state: StateType) => {
-    console.log('rerender')
-}
 
 // Types
 export type PostDataType = {
@@ -27,45 +24,63 @@ export type StateType = {
     }
 }
 
+export type StoreType = {
+    _state: StateType
+    _rerenderEntireTree: ()=> void
+    addPost: ()=> void
+    updateNewPostText: (newText: string)=> void
+    subscribe: (observer: ()=> void) => void
+    getState: ()=> StateType
+}
 //  Store
-export let state: StateType = {
-    profilePage: {
-        postsData: [
-            {id: 1, message: 'That\'s MyPost', likes: 2},
-            {id: 2, message: 'Hello!!', likes: 3},
-            {id: 3, message: 'Tinkoff!', likes: 89},
-            {id: 4, message: 'Zzz...', likes: 5},
-        ],
-        newPostText: 'kama'
+
+export let store: StoreType = {
+    _state: {
+        profilePage: {
+            postsData: [
+                {id: 1, message: 'That\'s MyPost', likes: 2},
+                {id: 2, message: 'Hello!!', likes: 3},
+                {id: 3, message: 'Tinkoff!', likes: 89},
+                {id: 4, message: 'Zzz...', likes: 5},
+            ],
+            newPostText: 'kama'
+        },
+        messagesPage: {
+            dialogsData: [
+                {id: 1, name: 'Dmitriy'},
+                {id: 2, name: 'Vladislav'},
+                {id: 3, name: 'Willy'},
+                {id: 4, name: 'Billy'},
+            ],
+            messagesData: [
+                {id: 1, message: 'Hello'},
+                {id: 2, message: 'How are you?'},
+                {id: 3, message: 'Where are u from?'},
+                {id: 4, message: 'Nice case bro!'},
+            ]
+        }
     },
-    messagesPage: {
-        dialogsData: [
-            {id: 1, name: 'Dmitriy'},
-            {id: 2, name: 'Vladislav'},
-            {id: 3, name: 'Willy'},
-            {id: 4, name: 'Billy'},
-        ],
-        messagesData: [
-            {id: 1, message: 'Hello'},
-            {id: 2, message: 'How are you?'},
-            {id: 3, message: 'Where are u from?'},
-            {id: 4, message: 'Nice case bro!'},
-        ]
+    _rerenderEntireTree(){
+        console.log('rerenderDoNothing')
+    },
+    addPost(){
+        this._state.profilePage.postsData.push(
+            {id: 6, message: this._state.profilePage.newPostText, likes: 0}
+            )
+        this._rerenderEntireTree()
+        console.log('storeAddPost')
+    },
+    updateNewPostText(newText){
+        this._state.profilePage.newPostText = newText
+        this._rerenderEntireTree()
+    },
+    subscribe(observer){
+        console.log('subscribeMFKR')
+        this._rerenderEntireTree = observer
+    },
+    getState(){
+        return this._state
     }
 }
 
-export const addPost = () => {
-    let newPost = {id: 5, message: state.profilePage.newPostText, likes: 0}
-    state.profilePage.postsData.push(newPost)
-    rerenderEntireTree(state)
-}
-export const updateNewPostText = (newText: string) => {
-    state.profilePage.newPostText = newText
-    rerenderEntireTree(state)
-}
-export const subscribe = (observer: (state: StateType)=> void) => {
-    console.log('subscribe')
-    /*observer(state)*/
-    rerenderEntireTree = observer
-}
 

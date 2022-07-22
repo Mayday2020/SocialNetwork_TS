@@ -5,12 +5,10 @@ import Box from "@mui/material/Box";
 import {Route, Routes} from "react-router";
 import Whoops404 from "../Whoops404/Whoops404";
 import TestComponent from "../TestComponent/TestComponent";
-import {StateType} from "../../redux/state";
+import {StoreType} from "../../redux/state";
 
 export type MainPropsType = {
-    state: StateType
-    addPost: () => void
-    updateNewPostText: (text: string) => void
+    store: StoreType
 }
 
 const Main: React.FC<MainPropsType> = (props) => {
@@ -18,13 +16,13 @@ const Main: React.FC<MainPropsType> = (props) => {
         <Box component='main' sx={{flexGrow: 1, p: 3}}>
             <Routes>
                 <Route path={'/'}/>
-                <Route path={'profile'} element={<Profile profilePage={props.state.profilePage}
-                                                          addPost={props.addPost}
-                                                          updateNewPostText={props.updateNewPostText}
+                <Route path={'profile'} element={<Profile profilePage={props.store._state.profilePage}
+                                                          addPost={props.store.addPost.bind(props.store)}
+                                                          updateNewPostText={props.store.updateNewPostText.bind(props.store)}
                                                 />}
                 />
                 <Route path={'messages'}
-                       element={<Dialogs messagesPage={props.state.messagesPage}/>}
+                       element={<Dialogs messagesPage={props.store._state.messagesPage}/>}
                 />
                 <Route path={'*'} element={<Whoops404/>}/>
             </Routes>
