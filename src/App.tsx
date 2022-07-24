@@ -6,10 +6,11 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Main from "./components/Main/Main";
 import {Typography} from "@mui/material";
-import {StoreType} from "./redux/state";
+import {ActionTypes, StoreType} from "./redux/state";
 
 export type AppPropsType = {
     store: StoreType
+    dispatch: (action: ActionTypes) => void
 }
 
 const App: React.FC<AppPropsType> = (props) => {
@@ -23,7 +24,7 @@ const App: React.FC<AppPropsType> = (props) => {
                     <Navbar/>
                 </Grid>
                 <Grid item xs={10}>
-                    <Main store={props.store}/>
+                    <Main store={props.store} dispatch={props.dispatch}/>
                 </Grid>
                 <Grid item xs={12} sx={{backgroundColor: 'lightgrey'}}>
                     <Typography>

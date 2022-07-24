@@ -1,21 +1,20 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import {ActionTypes, addPostAC, updateNewPostTextAC} from "../../../redux/state";
 
 type NewPostType = {
-    addPost: ()=> void
     newPostText: string
-    updateNewPostText: (text: string) => void
+    dispatch: (action: ActionTypes) => void
 }
 
 const NewPost: React.FC<NewPostType> = (props) => {
-
     let postMessageRef = React.createRef<HTMLTextAreaElement>()
     const addPost = () => {
-        props.addPost()
-        props.updateNewPostText('')
+        props.dispatch(addPostAC())
+        props.dispatch(updateNewPostTextAC(''))
     }
     let onPostChange = () => {
-        postMessageRef.current?.value && props.updateNewPostText(postMessageRef.current.value)
+        postMessageRef.current?.value && props.dispatch(updateNewPostTextAC(postMessageRef.current.value))
     }
     return (
         <div>

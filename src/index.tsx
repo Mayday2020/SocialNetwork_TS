@@ -11,7 +11,7 @@ export const rerenderEntireTree = () => {
     console.log('rerenderEntireTree')
     render(
         <Router>
-            <App store={store}/>
+            <App store={store} dispatch={store.dispatch.bind(store)}/>
         </Router>,
         document.getElementById('root')
     );

@@ -24,23 +24,22 @@ export type StateType = {
     }
 }
 
+//  ActionTypes
 type ActionTypeType = 'UPDATE-NEW-POST-TEXT' | 'ADD-POST'
-type ActionType = {
-    type: ActionTypeType,
-    newText?: string
-}
+export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC>
+
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
 export type StoreType = {
     _state: StateType
     _callSubscriber: () => void
-    addPost: () => void
-    updateNewPostText: (newText: string) => void
     subscribe: (observer: () => void) => void
     getState: () => StateType
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionTypes) => void
 }
-//  Store
 
+//  Store
 export let store: StoreType = {
     _state: {
         profilePage: {
@@ -70,17 +69,6 @@ export let store: StoreType = {
     _callSubscriber(){
         console.log('_callSubscriberDoNothing')
     },
-    addPost(){
-        this._state.profilePage.postsData.push(
-            {id: 6, message: this._state.profilePage.newPostText, likes: 0}
-            )
-        this._callSubscriber()
-        console.log('storeAddPost')
-    },
-    updateNewPostText(newText){
-        this._state.profilePage.newPostText = newText
-        this._callSubscriber()
-    },
     subscribe(observer){
         console.log('subscribeMFKR')
         this._callSubscriber = observer
@@ -90,21 +78,23 @@ export let store: StoreType = {
     },
     dispatch(action){
         switch (action.type){
-            case 'ADD-POST': {
+            case ADD_POST: {
                 this._state.profilePage.postsData.push(
                     {id: 6, message: this._state.profilePage.newPostText, likes: 0}
                 )
                 this._callSubscriber()
                 break
-            } case 'UPDATE-NEW-POST-TEXT': {
-                if (action.newText){
-                    this._state.profilePage.newPostText = action.newText
-                }
+            } case UPDATE_NEW_POST_TEXT: {
+                this._state.profilePage.newPostText = action.newText
                 this._callSubscriber()
                 break
             }
         }
     }
 }
+
+//  AC
+export const addPostAC = () => ({type: ADD_POST}) as const
+export const updateNewPostTextAC = (newText: string)=> ({type: UPDATE_NEW_POST_TEXT, newText: newText}) as const
 
 

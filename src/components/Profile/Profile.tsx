@@ -3,15 +3,14 @@ import NewPost from "./NewPost/NewPost";
 import MyPosts from "./MyPosts/MyPosts";
 import {Typography} from "@mui/material";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {PostDataType} from "../../redux/state";
+import {ActionTypes, PostDataType} from "../../redux/state";
 
 type ProfileType = {
     profilePage: {
         postsData: PostDataType[]
         newPostText: string
     }
-    addPost: ()=> void
-    updateNewPostText: (text: string) => void
+    dispatch: (action: ActionTypes) => void
 }
 
 const Profile: React.FC<ProfileType> = (props) => {
@@ -19,7 +18,7 @@ const Profile: React.FC<ProfileType> = (props) => {
         <div>
             <Typography variant="h4">Profile</Typography>
             <ProfileInfo />
-            <NewPost addPost={props.addPost} newPostText={props.profilePage.newPostText} updateNewPostText={props.updateNewPostText}/>
+            <NewPost dispatch={props.dispatch} newPostText={props.profilePage.newPostText} />
             <MyPosts postsData={props.profilePage.postsData}/>
         </div>
     )
