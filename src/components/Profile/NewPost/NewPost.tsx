@@ -11,7 +11,6 @@ const NewPost: React.FC<NewPostType> = (props) => {
     let postMessageRef = React.createRef<HTMLTextAreaElement>()
     const addPost = () => {
         props.dispatch(addPostAC())
-        props.dispatch(updateNewPostTextAC(''))
     }
     let onPostChange = () => {
         postMessageRef.current?.value && props.dispatch(updateNewPostTextAC(postMessageRef.current.value))

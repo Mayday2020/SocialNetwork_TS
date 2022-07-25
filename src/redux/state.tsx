@@ -20,16 +20,23 @@ export type StateType = {
     }
     messagesPage: {
         dialogsData: DialogDataType[],
-        messagesData: MessageDataType[]
+        messagesData: MessageDataType[],
+        newMessageBody: string
     }
 }
 
 //  ActionTypes
-type ActionTypeType = 'UPDATE-NEW-POST-TEXT' | 'ADD-POST'
-export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC>
+type ActionTypeType = 'UPDATE-NEW-POST-TEXT' | 'ADD-POST' | 'UPDATE-NEW-MESSAGE-BODY'
+
+export type ActionTypes = ReturnType<typeof addPostAC> |
+    ReturnType<typeof updateNewPostTextAC> |
+    ReturnType<typeof updateNewMessageBodyAC> |
+    ReturnType<typeof sendMessageAC>
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
+const SEND_MESSAGE = 'SEND-MESSAGE'
 
 export type StoreType = {
     _state: StateType
@@ -49,7 +56,7 @@ export let store: StoreType = {
                 {id: 3, message: 'Tinkoff!', likes: 89},
                 {id: 4, message: 'Zzz...', likes: 5},
             ],
-            newPostText: 'kama'
+            newPostText: 'text'
         },
         messagesPage: {
             dialogsData: [
@@ -63,7 +70,8 @@ export let store: StoreType = {
                 {id: 2, message: 'How are you?'},
                 {id: 3, message: 'Where are u from?'},
                 {id: 4, message: 'Nice case bro!'},
-            ]
+            ],
+            newMessageBody: 'body'
         }
     },
     _callSubscriber(){
@@ -82,10 +90,20 @@ export let store: StoreType = {
                 this._state.profilePage.postsData.push(
                     {id: 6, message: this._state.profilePage.newPostText, likes: 0}
                 )
+                this._state.profilePage.newPostText = 'nextPost'
                 this._callSubscriber()
                 break
             } case UPDATE_NEW_POST_TEXT: {
                 this._state.profilePage.newPostText = action.newText
+                this._callSubscriber()
+                break
+            } case UPDATE_NEW_MESSAGE_BODY: {
+                this._state.messagesPage.newMessageBody = action.body
+                this._callSubscriber()
+                break
+            } case SEND_MESSAGE: {
+                this._state.messagesPage.messagesData.push({id: 5, message: this._state.messagesPage.newMessageBody})
+                this._state.messagesPage.newMessageBody = 'nexBody'
                 this._callSubscriber()
                 break
             }
@@ -96,5 +114,7 @@ export let store: StoreType = {
 //  AC
 export const addPostAC = () => ({type: ADD_POST}) as const
 export const updateNewPostTextAC = (newText: string)=> ({type: UPDATE_NEW_POST_TEXT, newText: newText}) as const
+export const updateNewMessageBodyAC = (body: string)=> ({type: UPDATE_NEW_MESSAGE_BODY, body: body}) as const
+export const sendMessageAC = ()=> ({type: SEND_MESSAGE}) as const
 
 

@@ -21,7 +21,7 @@ const Main: React.FC<MainPropsType> = (props) => {
                                                 />}
                 />
                 <Route path={'messages'}
-                       element={<Dialogs messagesPage={props.store._state.messagesPage}/>}
+                       element={<Dialogs messagesPage={props.store.getState().messagesPage} dispatch={props.dispatch}/>}
                 />
                 <Route path={'*'} element={<Whoops404/>}/>
             </Routes>
