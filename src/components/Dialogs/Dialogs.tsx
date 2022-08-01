@@ -2,7 +2,8 @@ import React from 'react'
 import {Grid, Typography} from "@mui/material";
 import DialogsItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {ActionTypes, DialogDataType, MessageDataType, sendMessageAC, updateNewMessageBodyAC} from "../../redux/state";
+import {ActionTypes, DialogDataType, MessageDataType} from "../../redux/state";
+import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogsReduser";
 
 type DialogsType = {
     messagesPage: {
@@ -31,7 +32,7 @@ const Dialogs: React.FC<DialogsType> = (props) => {
                 <Grid item xs={5}>
                     {props.messagesPage.messagesData.map( m => <MessageItem message={m.message} id={m.id} key={m.id}/>)}
                 </Grid>
-                <Grid>
+                <Grid item xs={10}>
                     <textarea ref={textMessageRef} onChange={onChangeMessage} value={props.messagesPage.newMessageBody}> </textarea>
                     <div>
                         <button onClick={addMessage}>Add message</button>

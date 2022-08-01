@@ -11,7 +11,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import NumbersIcon from '@mui/icons-material/Numbers';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import s from './navbar.module.css';
 
 let iconFunction = (index: number) => {
@@ -41,27 +41,38 @@ const Navbar: React.FC<NavbarType> = (props) => {
         <Box sx={{ overflow: 'auto' }}>
                 <List>
                     {['Profile', 'Messages', 'News', 'Music'].map((elementText, index) => (
-                        <Link to={elementText.toLowerCase()} className={s.link} key={elementText}>
+                        <NavLink to={elementText.toLowerCase()}
+                              className={s.link}
+                              key={elementText}
+                              style={(params: {isActive: boolean})=>{
+                                  return {color: params.isActive ? 'blue' : 'grey'}
+                              }}
+                        >
                             <ListItem button key={elementText}>
                                 <ListItemIcon>
                                     { iconFunction(index) }
                                 </ListItemIcon>
                                 <ListItemText primary={elementText} />
                             </ListItem>
-                        </Link>
+                        </NavLink>
                     ))}
                 </List>
             <Divider />
             <List>
                 {['Settings'].map((elementText) => (
-                    <Link to={elementText.toLowerCase()} className={s.link}>
+                    <NavLink to={elementText.toLowerCase()}
+                             className={s.link}
+                             style={(params: {isActive: boolean})=>{
+                                 return {color: params.isActive ? 'red' : 'grey'}
+                             }}
+                    >
                         <ListItem button key={elementText}>
                             <ListItemIcon>
                                 <SettingsIcon />
                             </ListItemIcon>
                             <ListItemText primary={elementText} />
                         </ListItem>
-                    </Link>
+                    </NavLink>
                 ))}
             </List>
         </Box>
