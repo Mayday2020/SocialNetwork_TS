@@ -4,7 +4,7 @@ import Dialogs from "../Dialogs/Dialogs";
 import Box from "@mui/material/Box";
 import {Route, Routes} from "react-router";
 import Whoops404 from "../Whoops404/Whoops404";
-import {ActionTypes, StoreType} from "../../redux/state";
+import {ActionTypes, StoreType} from "../../redux/store";
 
 export type MainPropsType = {
     store: StoreType

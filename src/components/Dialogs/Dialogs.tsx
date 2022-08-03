@@ -2,7 +2,7 @@ import React from 'react'
 import {Grid, Typography} from "@mui/material";
 import DialogsItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {ActionTypes, DialogDataType, MessageDataType} from "../../redux/state";
+import {ActionTypes, DialogDataType, MessageDataType} from "../../redux/store";
 import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogsReduser";
 
 type DialogsType = {

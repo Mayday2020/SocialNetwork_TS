@@ -6,10 +6,10 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Main from "./components/Main/Main";
 import {Typography} from "@mui/material";
-import {ActionTypes, StoreType} from "./redux/state";
+import {ActionTypes, StoreType} from "./redux/store";
 
 export type AppPropsType = {
-    store: StoreType
+    store: any
     dispatch: (action: ActionTypes) => void
 }
 

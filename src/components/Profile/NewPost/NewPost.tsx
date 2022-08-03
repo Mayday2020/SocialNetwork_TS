@@ -1,6 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import {ActionTypes} from "../../../redux/state";
+import {ActionTypes} from "../../../redux/store";
 import {addPostAC, updateNewPostTextAC} from "../../../redux/profileReducer";
 
 type NewPostType = {
