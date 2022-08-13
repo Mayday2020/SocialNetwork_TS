@@ -43,7 +43,7 @@ export type ActionTypes = ReturnType<typeof updateNewMessageBodyAC> |
     ReturnType<typeof updateNewPostTextAC>
 
 //  Store
-export let store: StoreType = {
+let store: StoreType = {
     _state: {
         profilePage: {
             postsData: [
@@ -87,5 +87,5 @@ export let store: StoreType = {
     }
 }
 
-
+export default store
 

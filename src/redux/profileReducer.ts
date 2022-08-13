@@ -9,7 +9,7 @@ let initialState: ProfileStateType = {
     postsData: [
         {id: 1, message: 'That\'s MyPost', likes: 2},
         {id: 2, message: 'Hello!!', likes: 3},
-        {id: 3, message: 'Tinkoff!', likes: 89},
+        {id: 3, message: 'WHF?!', likes: 89},
         {id: 4, message: 'Zzz...', likes: 5},
     ],
     newPostText: 'text'

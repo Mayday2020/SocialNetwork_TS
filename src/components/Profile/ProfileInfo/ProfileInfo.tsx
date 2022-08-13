@@ -4,7 +4,7 @@ import {Typography} from "@mui/material";
 const ProfileInfo = () => {
     return <div>
         <Typography>
-            Ava+description
+            Ava + description
         </Typography>
     </div>
 }

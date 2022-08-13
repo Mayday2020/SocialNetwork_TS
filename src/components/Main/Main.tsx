@@ -1,10 +1,10 @@
 import React from "react";
 import Profile from "../Profile/Profile";
-import Dialogs from "../Dialogs/Dialogs";
 import Box from "@mui/material/Box";
 import {Route, Routes} from "react-router";
 import Whoops404 from "../Whoops404/Whoops404";
 import {ActionTypes, StoreType} from "../../redux/store";
+import DialogsContainer from "../Dialogs/DialogsContainer";
 
 export type MainPropsType = {
     store: StoreType
@@ -16,12 +16,10 @@ const Main: React.FC<MainPropsType> = (props) => {
         <Box component='main' sx={{flexGrow: 1, p: 3}}>
             <Routes>
                 <Route path={'/'}/>
-                <Route path={'profile'} element={<Profile profilePage={props.store.getState().profilePage}
-                                                          dispatch={props.dispatch}
-                                                />}
+                <Route path={'profile'} element={<Profile store={props.store}/>}
                 />
                 <Route path={'messages'}
-                       element={<Dialogs messagesPage={props.store.getState().messagesPage} dispatch={props.dispatch}/>}
+                       element={<DialogsContainer store={props.store}/>}
                 />
                 <Route path={'*'} element={<Whoops404/>}/>
             </Routes>
