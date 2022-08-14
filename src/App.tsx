@@ -13,7 +13,7 @@ export type AppPropsType = {
     dispatch: (action: ActionTypes) => void
 }
 
-const App: React.FC<AppPropsType> = (props) => {
+const App: React.FC<any> = (props) => {
     return (
         <Container fixed>
             <Grid container>
@@ -24,7 +24,7 @@ const App: React.FC<AppPropsType> = (props) => {
                     <Navbar/>
                 </Grid>
                 <Grid item xs={10}>
-                    <Main store={props.store} dispatch={props.dispatch}/>
+                    <Main />
                 </Grid>
                 <Grid item xs={12} sx={{backgroundColor: 'lightgrey'}}>
                     <Typography>

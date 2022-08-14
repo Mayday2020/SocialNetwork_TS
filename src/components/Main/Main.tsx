@@ -11,15 +11,15 @@ export type MainPropsType = {
     dispatch: (action: ActionTypes) => void
 }
 
-const Main: React.FC<MainPropsType> = (props) => {
+const Main: React.FC<any> = (props) => {
     return (
         <Box component='main' sx={{flexGrow: 1, p: 3}}>
             <Routes>
                 <Route path={'/'}/>
-                <Route path={'profile'} element={<Profile store={props.store}/>}
+                <Route path={'profile'} element={<Profile />}
                 />
                 <Route path={'messages'}
-                       element={<DialogsContainer store={props.store}/>}
+                       element={<DialogsContainer />}
                 />
                 <Route path={'*'} element={<Whoops404/>}/>
             </Routes>

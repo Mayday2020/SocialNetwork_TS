@@ -7,7 +7,7 @@ type NewPostType = {
     addPost: () => void
 }
 
-const NewPost: React.FC<NewPostType> = (props) => {
+const NewPost: React.FC<any> = (props) => {
 
     let postMessageRef = React.createRef<HTMLTextAreaElement>()
     return (

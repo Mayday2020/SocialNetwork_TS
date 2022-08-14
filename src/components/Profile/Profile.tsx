@@ -9,13 +9,13 @@ type ProfileType = {
     store: StoreType
 }
 
-const Profile: React.FC<ProfileType> = (props) => {
+const Profile: React.FC<any> = (props) => {
     return (
         <div>
             <Typography variant="h4">Profile</Typography>
             <ProfileInfo />
-            <NewPostContainer store={props.store} />
-            <MyPostsContainer store={props.store}/>
+            <NewPostContainer />
+            <MyPostsContainer />
         </div>
     )
 }
