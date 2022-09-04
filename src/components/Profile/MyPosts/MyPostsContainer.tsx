@@ -1,22 +1,16 @@
 import React from 'react';
-import {StoreType} from "../../../redux/store";
+import {PostDataType, ProfileStateType, StoreType} from "../../../redux/store";
 import MyPosts from "./MyPosts";
-import MyContext from "../../../ContextComponent";
+import {connect} from "react-redux";
 
-type MyPostContainerType = {
-    store: StoreType
+const mapStateToProps = (state: ProfileStateType): { postsData: PostDataType[]} => {
+    return {
+        postsData: state.postsData
+    }
 }
-const MyPostsContainer: React.FC<any> = (props) => {
 
-    return <MyContext.Consumer>
-        {
-            (store) => {
-                let state = store.getState().profilePage.postsData
-                return   <MyPosts postsData={state}/>
-            }
-        }
-    </MyContext.Consumer>
-}
+const MyPostsContainer = connect(mapStateToProps)(MyPosts)
+
 
 export default MyPostsContainer;
 
