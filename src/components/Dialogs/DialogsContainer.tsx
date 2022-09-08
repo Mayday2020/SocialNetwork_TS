@@ -1,14 +1,11 @@
 import React from 'react'
 import {DialogDataType, DialogsStateType, StoreType} from "../../redux/store";
 import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogsReduser";
-import Dialogs from "./Dialogs";
-import {connect} from "react-redux";
-
-type DialogsContainerType = {
-    store: StoreType
-}
+import Dialogs, {DialogsType} from "./Dialogs";
+import {connect, ConnectedComponent} from "react-redux";
 
 
+// type DialogsContainerType = ConnectedComponent<React.FC<DialogsType>, Omit<DialogsType & {children?: React.ReactNode}, "addMessage" | "onChangeMessage">>
 let mapStateToProps = (state: DialogsStateType): { dialogsData: DialogDataType[] } => {
     return {
         dialogsData: state.dialogsData

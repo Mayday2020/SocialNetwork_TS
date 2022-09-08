@@ -4,7 +4,7 @@ import DialogsItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 import {DialogsStateType} from "../../redux/store";
 
-type DialogsType = {
+export type DialogsType = {
     state: DialogsStateType
     addMessage: () => void
     onChangeMessage: (ref: any) => void
