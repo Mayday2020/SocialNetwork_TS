@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Grid, Typography} from "@mui/material";
 import DialogsItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
@@ -12,8 +12,10 @@ export type DialogsType = {
 
 const Dialogs: React.FC<DialogsType> = (props) => {
 
-    let textMessageRef = React.createRef<HTMLTextAreaElement>()
-
+    const [state, setState] = useState('')
+    const changeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setState(e.currentTarget.value)
+    }
     return (
         <div>
             <Typography variant="h4">Dialogs</Typography>
@@ -25,7 +27,7 @@ const Dialogs: React.FC<DialogsType> = (props) => {
                     {props.state.messagesData.map( m => <MessageItem message={m.message} id={m.id} key={m.id}/>)}
                 </Grid>
                 <Grid item xs={10}>
-                    <textarea ref={textMessageRef} onChange={() => props.onChangeMessage(textMessageRef)} value={props.state.newMessageBody}> </textarea>
+                    <textarea onChange={(e) => changeMessage(e)} value={state}> </textarea>
                     <div>
                         <button onClick={props.addMessage}>Add message</button>
                     </div>

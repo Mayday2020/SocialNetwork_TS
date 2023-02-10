@@ -2,8 +2,8 @@ import {ActionTypes, DialogsStateType} from "./store";
 
 type DialogsReducerType = (state: DialogsStateType, action: ActionTypes) => DialogsStateType
 
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
-const SEND_MESSAGE = 'SEND-MESSAGE'
+const ONCHANGE_MESSAGE = 'ONCHANGE-MESSAGE'
+const ADD_MESSAGE = 'ADD-MESSAGE'
 
 let initialState: DialogsStateType = {
     dialogsData: [
@@ -22,19 +22,21 @@ let initialState: DialogsStateType = {
 }
 
 const dialogsReducer: DialogsReducerType = (state = initialState, action) => {
+    let stateCopy = { ...state, messagesData: [ ...state.messagesData ] }
+
     switch (action.type){
-        case UPDATE_NEW_MESSAGE_BODY: {
-            return {...state, newMessageBody: action.body}
-        } case SEND_MESSAGE: {
-            let body = state.newMessageBody
-            return {...state, messagesData: [...state.messagesData, {id: 5, message: body }], newMessageBody: ''}
+        case ONCHANGE_MESSAGE: {
+            return {...stateCopy, newMessageBody: action.textOfMessage}
+        } case ADD_MESSAGE: {
+            let body = stateCopy.newMessageBody
+            return {...stateCopy, messagesData: [...stateCopy.messagesData, {id: 5, message: body }], newMessageBody: ''}
         } default: {
-            return state
+            return stateCopy
         }
     }
 }
 
-export const updateNewMessageBodyAC = (body: string) => ({type: UPDATE_NEW_MESSAGE_BODY, body: body}) as const
-export const sendMessageAC = () => ({type: SEND_MESSAGE}) as const
+export const onChangeMessageAC = (textOfMessage: string) => ({type: ONCHANGE_MESSAGE, textOfMessage}) as const
+export const addMessageAC = () => ({type: ADD_MESSAGE}) as const
 
 export default dialogsReducer;

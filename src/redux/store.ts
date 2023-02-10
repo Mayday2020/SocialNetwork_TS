@@ -1,5 +1,5 @@
 import profileReducer, {addPostAC, updateNewPostTextAC} from "./profileReducer";
-import dialogsReducer, {sendMessageAC, updateNewMessageBodyAC} from "./dialogsReduser";
+import dialogsReducer, {addMessageAC, onChangeMessageAC} from "./dialogsReduser";
 
 // Types
 export type PostDataType = {
@@ -37,8 +37,8 @@ export type StoreType = {
 }
 
 //  ActionTypes
-export type ActionTypes = ReturnType<typeof updateNewMessageBodyAC> |
-    ReturnType<typeof sendMessageAC> |
+export type ActionTypes = ReturnType<typeof onChangeMessageAC> |
+    ReturnType<typeof addMessageAC> |
     ReturnType<typeof addPostAC> |
     ReturnType<typeof updateNewPostTextAC>
 

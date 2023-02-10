@@ -12,7 +12,7 @@ let initialState: ProfileStateType = {
         {id: 3, message: 'WHF?!', likes: 89},
         {id: 4, message: 'Zzz...', likes: 5},
     ],
-    newPostText: 'text'
+    newPostText: 'any text'
 }
 
 
@@ -31,6 +31,8 @@ const profileReducer: ProfileReducerType = (state = initialState, action) => {
 }
 
 export const addPostAC = () => ({type: ADD_POST}) as const
-export const updateNewPostTextAC = (newText: string)=> ({type: UPDATE_NEW_POST_TEXT, newText: newText}) as const
+export const updateNewPostTextAC = (newText: string)=> {
+    return {type: UPDATE_NEW_POST_TEXT, newText: newText} as const
+}
 
 export default profileReducer;

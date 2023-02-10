@@ -10,4 +10,5 @@ let reducers = combineReducers({
 
 let store: StoreType = createStore(reducers);
 
+
 export default store

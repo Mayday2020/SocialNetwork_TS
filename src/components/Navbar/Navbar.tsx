@@ -11,6 +11,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import NumbersIcon from '@mui/icons-material/Numbers';
+import ContactsIcon from '@mui/icons-material/Contacts';
 import {NavLink} from "react-router-dom";
 import s from './navbar.module.css';
 
@@ -28,6 +29,9 @@ let iconFunction = (index: number) => {
         case 3: {
             return <LibraryMusicIcon />
         }
+        case 4: {
+            return <ContactsIcon />
+        }
         default: {
             return <NumbersIcon />
         }
@@ -40,7 +44,7 @@ const Navbar: React.FC<NavbarType> = (props) => {
     return (
         <Box sx={{ overflow: 'auto' }}>
                 <List>
-                    {['Profile', 'Messages', 'News', 'Music'].map((elementText, index) => (
+                    {['Profile', 'Messages', 'News', 'Music', 'Users'].map((elementText, index) => (
                         <NavLink to={elementText.toLowerCase()}
                               className={s.link}
                               key={elementText}
