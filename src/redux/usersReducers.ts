@@ -1,34 +1,11 @@
-import {} from "./store";
-import {addMessageAC, onChangeMessageAC} from "./dialogsReduser";
-import {addPostAC, updateNewPostTextAC} from "./profileReducer";
+import {UserType} from "./store";
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
 
 
-/*type FollowActionType = {
-    type: string
-    userId: string
-}
-type UnfollowActionType = {
-    type: string
-    userId: string
-}
-type SetUsersActionType = {
-    type: string,
-    users: UserType[]
-}*/
-// type UserReducerActionTypes = FollowActionType | UnfollowActionType | SetUsersActionType
 
-type UserType = {
-    id: string
-    fullName: string
-    status: string
-    location: {country: string, city: string}
-    avatar: string
-    followed: boolean
-}
 type StateType = {
     users: UserType[]
 }
@@ -101,13 +78,13 @@ const usersReducers: UsersReducerType = (state = initialState, action: ActionTyp
     }
 }
 
-const followAC = (userId: string) => {
+export const followAC = (userId: string) => {
     return { type: FOLLOW, userId } as const
 }
-const unfollowAC = (userId: string) => {
+export const unfollowAC = (userId: string) => {
     return { type: UNFOLLOW, userId } as const
 }
-const setUsersAC = (users: UserType[]) => {  // Тут под вопросом в каком виде приходят users, пока UserType[]
+export const setUsersAC = (users: UserType[]) => {  // Тут под вопросом в каком виде приходят users, пока UserType[]
     return {type: SET_USERS, users} as const
 }
 

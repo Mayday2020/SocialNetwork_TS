@@ -2,6 +2,14 @@ import profileReducer, {addPostAC, updateNewPostTextAC} from "./profileReducer";
 import dialogsReducer, {addMessageAC, onChangeMessageAC} from "./dialogsReduser";
 
 // Types
+export type UserType = {
+    id: string
+    fullName: string
+    status: string
+    location: {country: string, city: string}
+    avatar: string
+    followed: boolean
+}
 export type PostDataType = {
     id: number
     message: string
@@ -19,6 +27,9 @@ export type ProfileStateType = {
     postsData: PostDataType[]
     newPostText: string
 }
+export type UsersStateType ={
+    users: UserType[]
+}
 export type DialogsStateType = {
     dialogsData: DialogDataType[],
     messagesData: MessageDataType[],
@@ -27,6 +38,7 @@ export type DialogsStateType = {
 export type StateType = {
     profilePage: ProfileStateType
     messagesPage: DialogsStateType
+    usersPage: UsersStateType
 }
 export type StoreType = {
     _state: StateType
@@ -68,6 +80,43 @@ let store: StoreType = {
                 {id: 4, message: 'Nice case bro!'},
             ],
             newMessageBody: 'body'
+        },
+        usersPage: {
+            users: [
+                {
+                    id: '1',
+                    fullName: 'Dmitry',
+                    status: 'So tired',
+                    location: {
+                        country: 'Russia',
+                        city: 'Moscow'
+                    },
+                    avatar: 'url...',
+                    followed: false
+                },
+                {
+                    id: '2',
+                    fullName: 'Stanislav',
+                    status: 'Some status',
+                    location: {
+                        country: 'Belarus',
+                        city: 'Minsk'
+                    },
+                    avatar: 'url...',
+                    followed: false
+                },
+                {
+                    id: '3',
+                    fullName: 'Alexander',
+                    status: 'Nice day!',
+                    location: {
+                        country: 'France',
+                        city: 'Paris'
+                    },
+                    avatar: 'url...',
+                    followed: true
+                },
+            ]
         }
     },
     _callSubscriber(){

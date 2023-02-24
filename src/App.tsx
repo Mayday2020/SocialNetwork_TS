@@ -14,6 +14,7 @@ export type AppPropsType = {
 }
 
 const App: React.FC<any> = (props) => {
+    console.log('app render')
     return (
         <Container fixed>
             <Grid container>

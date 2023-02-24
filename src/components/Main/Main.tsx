@@ -5,7 +5,7 @@ import {Route, Routes} from "react-router";
 import Whoops404 from "../Whoops404/Whoops404";
 import {ActionTypes, StoreType} from "../../redux/store";
 import DialogsContainer from "../Dialogs/DialogsContainer";
-import Users from "../Users/Users";
+import UsersContainer from "../Users/UsersContainer";
 
 export type MainPropsType = {
     store: StoreType
@@ -13,6 +13,7 @@ export type MainPropsType = {
 }
 
 const Main: React.FC<any> = (props) => {
+    console.log('main render')
     return (
         <Box component='main' sx={{flexGrow: 1, p: 3}}>
             <Routes>
@@ -22,7 +23,7 @@ const Main: React.FC<any> = (props) => {
                 <Route path={'messages'}
                        element={<DialogsContainer />}
                 />
-                <Route path={'users'} element={<Users />}/>
+                <Route path={'users'} element={<UsersContainer />}/>
                 <Route path={'*'} element={<Whoops404/>}/>
             </Routes>
         </Box>
