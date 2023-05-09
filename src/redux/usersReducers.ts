@@ -4,56 +4,20 @@ const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
 
-
-
 type StateType = {
     users: UserType[]
 }
 type UsersReducerType = (state: StateType, action: ActionTypes) => StateType
 
-let initialState: StateType  = {
-    users: [
-        {
-            id: '1',
-            fullName: 'Dmitry',
-            status: 'So tired',
-            location: {
-                country: 'Russia',
-                city: 'Moscow'
-            },
-            avatar: 'url...',
-            followed: false
-        },
-        {
-            id: '2',
-            fullName: 'Stanislav',
-            status: 'Some status',
-            location: {
-                country: 'Belarus',
-                city: 'Minsk'
-            },
-            avatar: 'url...',
-            followed: false
-        },
-        {
-            id: '3',
-            fullName: 'Alexander',
-            status: 'Nice day!',
-            location: {
-                country: 'France',
-                city: 'Paris'
-            },
-            avatar: 'url...',
-            followed: true
-        },
-    ]
-}
-
+let initialState: StateType = {
+    users: []
+};
 
 const usersReducers: UsersReducerType = (state = initialState, action: ActionTypes): StateType => {
 
     switch (action.type) {
         case FOLLOW: {
+            console.log(action.type)
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -62,6 +26,7 @@ const usersReducers: UsersReducerType = (state = initialState, action: ActionTyp
             }
         }
         case UNFOLLOW: {
+            console.log(action.type)
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -70,7 +35,8 @@ const usersReducers: UsersReducerType = (state = initialState, action: ActionTyp
             }
         }
         case SET_USERS: {
-            return {...state, users: [...state.users, ...action.users]}
+            console.log(action.type)
+            return {...state, users: [...action.users]}
         }
         default: {
             return state
@@ -78,13 +44,13 @@ const usersReducers: UsersReducerType = (state = initialState, action: ActionTyp
     }
 }
 
-export const followAC = (userId: string) => {
+export const followAC = (userId: number) => {
     return { type: FOLLOW, userId } as const
 }
-export const unfollowAC = (userId: string) => {
+export const unfollowAC = (userId: number) => {
     return { type: UNFOLLOW, userId } as const
 }
-export const setUsersAC = (users: UserType[]) => {  // Тут под вопросом в каком виде приходят users, пока UserType[]
+export const setUsersAC = (users: UserType[]) => {
     return {type: SET_USERS, users} as const
 }
 

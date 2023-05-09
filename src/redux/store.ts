@@ -3,12 +3,15 @@ import dialogsReducer, {addMessageAC, onChangeMessageAC} from "./dialogsReduser"
 
 // Types
 export type UserType = {
-    id: string
-    fullName: string
-    status: string
-    location: {country: string, city: string}
-    avatar: string
     followed: boolean
+    id: number
+    name: string
+    photos: {
+        large: string
+        small: string
+    }
+    status: string
+    uniqueUrlName: string
 }
 export type PostDataType = {
     id: number
@@ -27,7 +30,7 @@ export type ProfileStateType = {
     postsData: PostDataType[]
     newPostText: string
 }
-export type UsersStateType ={
+export type UsersStateType = {
     users: UserType[]
 }
 export type DialogsStateType = {
@@ -84,38 +87,16 @@ let store: StoreType = {
         usersPage: {
             users: [
                 {
-                    id: '1',
-                    fullName: 'Dmitry',
-                    status: 'So tired',
-                    location: {
-                        country: 'Russia',
-                        city: 'Moscow'
+                    followed: false,
+                    id: 123,
+                    name: 'John_Cina',
+                    photos: {
+                        large: '',
+                        small: ''
                     },
-                    avatar: 'url...',
-                    followed: false
-                },
-                {
-                    id: '2',
-                    fullName: 'Stanislav',
-                    status: 'Some status',
-                    location: {
-                        country: 'Belarus',
-                        city: 'Minsk'
-                    },
-                    avatar: 'url...',
-                    followed: false
-                },
-                {
-                    id: '3',
-                    fullName: 'Alexander',
-                    status: 'Nice day!',
-                    location: {
-                        country: 'France',
-                        city: 'Paris'
-                    },
-                    avatar: 'url...',
-                    followed: true
-                },
+                    status: '',
+                    uniqueUrlName: ''
+                }
             ]
         }
     },
